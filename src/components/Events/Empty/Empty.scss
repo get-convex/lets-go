@@ -1,0 +1,17 @@
+.Empty {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding: 100px;
+
+  img {
+    width: 240px;
+  }
+
+  span {
+    color: var(--color-neutral-5);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
+  }
+}

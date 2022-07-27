@@ -1,0 +1,11 @@
+{
+  "authInfo": [
+    {
+      "domain": "https://dev-gvxf5mpp.us.auth0.com",
+      "applicationID": "R7uE0NF2NuZaLLI8fJv4JOaqjiHAoc8H"
+    }
+  ],
+  "functions": "convex/",
+  "instanceName": "kindhearted-wolf-11",
+  "origin": "https://kindhearted-wolf-11.convex.cloud"
+}

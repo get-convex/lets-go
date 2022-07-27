@@ -1,0 +1,9 @@
+.CreateEvent {
+  padding: 50px;
+
+  &__copyLink {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}

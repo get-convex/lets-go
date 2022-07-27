@@ -1,0 +1,18 @@
+:root {
+  --font-family: "Poppins", sans-serif;
+
+  --font-size-larger: 20px;
+  --font-size-large: 18px;
+  --font-size-medium: 14px;
+  --font-size-small: 12px;
+  --font-size-smaller: 10px;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-wide: 1.7;
+  --line-height-regular: 1.2;
+}

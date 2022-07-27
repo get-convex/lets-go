@@ -1,0 +1,62 @@
+.EventDetails {
+  padding-bottom: 40px;
+
+  &__title {
+    font-size: var(--font-size-large);
+  }
+
+  &__description {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+    margin-bottom: 20px;
+  }
+
+  &__details {
+    color: var(--color-neutral-7);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__detail {
+      display: flex;
+      gap: 8px;
+      line-height: 28px;
+
+      strong {
+        font-weight: var(--font-weight-medium);
+      }
+
+      span {
+        font-weight: var(--font-weight-light);
+      }
+
+      &--vertical {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__attendees {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding: 8px 0;
+    }
+  }
+
+  &__user {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

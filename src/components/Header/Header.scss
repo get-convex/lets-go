@@ -1,0 +1,42 @@
+.Header {
+  background-color: var(--color-neutral-0);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    color: var(--color-primary-2);
+    width: 28px;
+    height: 28px;
+  }
+
+  &__signInButton.ant-btn-text {
+    color: var(--color-neutral-0);
+
+    &:hover {
+      color: var(--color-neutral-1);
+    }
+  }
+
+  &__user {
+    color: var(--color-neutral-7);
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &--dark {
+    background-color: transparent;
+
+    .Header__user {
+      color: var(--color-neutral-0);
+    }
+
+    .Header__logo {
+      color: var(--color-neutral-0);
+    }
+  }
+}
