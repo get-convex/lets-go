@@ -12,7 +12,7 @@ export default authenticatedMutation(
       return null;
     }
 
-    // Ensure there's still an open spot.
+    // Ensure there's still an open slot.
     const attendees = await db
       .query("attendees")
       .filter(q => q.eq(q.field("eventId"), eventId))
