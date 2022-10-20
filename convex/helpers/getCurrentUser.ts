@@ -8,8 +8,8 @@ const getCurrentUser = async ({ auth, db }: QueryCtx<DataModel>) => {
   }
 
   return await db
-    .table("users")
-    .filter((q) => q.eq(q.field("tokenIdentifier"), identity?.tokenIdentifier))
+    .query("users")
+    .filter(q => q.eq(q.field("tokenIdentifier"), identity?.tokenIdentifier))
     .unique();
 };
 
