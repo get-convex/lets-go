@@ -7,6 +7,20 @@ export type CreateAttendeeInput = {
 
 export default authenticatedMutation(
   async ({ db }, user, { eventId }: CreateAttendeeInput) => {
+    const event = await db.get(eventId);
+    if (!event) {
+      return null;
+    }
+
+    // Ensure there's still an open spot.
+    const attendees = await db
+      .query("attendees")
+      .filter(q => q.eq(q.field("eventId"), eventId))
+      .collect();
+    if (attendees.length >= event?.slots) {
+      return null;
+    }
+
     // Prevent inserting duplicate attendees.
     const existingAttendee = await db
       .query("attendees")
@@ -17,7 +31,6 @@ export default authenticatedMutation(
         )
       )
       .first();
-
     if (existingAttendee) {
       return null;
     }
