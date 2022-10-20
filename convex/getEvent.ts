@@ -30,14 +30,13 @@ export default query(async (ctx, input: GetEventInput) => {
 
   // Get details for each of the attendees.
   const attendeeUsers = await Promise.all(
-    attendees.map(
-      async attendee => (await db.get(attendee.userId)) as Document<"users">
-    )
+    attendees.map(async attendee => await db.get(attendee.userId))
   );
 
   const isCurrentUserAttending =
     user &&
-    attendeeUsers.find(attendee => attendee._id.equals(user._id)) !== undefined;
+    attendeeUsers.find(attendee => attendee?._id.equals(user._id)) !==
+      undefined;
 
   return {
     ...event,
