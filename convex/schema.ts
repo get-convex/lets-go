@@ -2,13 +2,13 @@ import { defineSchema, defineTable, s } from "convex/schema";
 
 export default defineSchema({
   attendees: defineTable({
-    eventId: s.id(),
-    userId: s.id(),
+    eventId: s.id("events"),
+    userId: s.id("users"),
   }),
   events: defineTable({
     description: s.string(),
     endDate: s.string(),
-    host: s.id(),
+    host: s.id("users"),
     inviteCode: s.string(),
     slots: s.number(),
     startDate: s.string(),

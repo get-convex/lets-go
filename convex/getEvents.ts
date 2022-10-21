@@ -1,15 +1,14 @@
 import asyncFilter from "./helpers/asyncFilter";
 import authenticatedQuery from "./helpers/authenticatedQuery";
-import { Document } from "./_generated/dataModel";
 
 export default authenticatedQuery(async ({ db }, user) => {
-  const allEvents = await db.table("events").collect();
+  const allEvents = await db.query("events").collect();
 
   // Filter out events that the user is not hosting or attending.
-  const availableEvents = await asyncFilter(allEvents, async (event) => {
+  const availableEvents = await asyncFilter(allEvents, async event => {
     const attendees = await db
-      .table("attendees")
-      .filter((q) =>
+      .query("attendees")
+      .filter(q =>
         q.and(
           q.eq(q.field("eventId"), event._id),
           q.eq(q.field("userId"), user._id)
@@ -24,14 +23,17 @@ export default authenticatedQuery(async ({ db }, user) => {
   });
 
   return Promise.all(
-    availableEvents.map(async (event) => {
+    availableEvents.map(async event => {
       // Get the user for this host.
-      const host: Document<"users"> = await db.get(event.host);
+      const host = await db.get(event.host);
+      if (!host) {
+        return null;
+      }
 
       // Get the attendees for this event.
       const attendees = await db
-        .table("attendees")
-        .filter((q) => q.eq(q.field("eventId"), event._id))
+        .query("attendees")
+        .filter(q => q.eq(q.field("eventId"), event._id))
         .collect();
 
       return {

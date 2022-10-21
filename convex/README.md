@@ -9,7 +9,7 @@ A query function (how you read data) looks like this:
 import { query } from "convex/server";
 
 export default query(async ({ db }): Promise<number> => {
-  const counterDoc = await db.table("counter_table").first();
+  const counterDoc = await db.query("counter_table").first();
   console.log("Got stuff");
   if (counterDoc === null) {
     return 0;
@@ -25,7 +25,7 @@ A mutation function (how you write data) looks like this:
 import { mutation } from "convex/server";
 
 export default mutation(async ({ db }, increment: number) => {
-  let counterDoc = await db.table("counter_table").first();
+  let counterDoc = await db.query("counter_table").first();
   if (counterDoc === null) {
     counterDoc = {
       counter: increment,
