@@ -1,10 +1,10 @@
 import { Modal } from "antd";
-import { Id } from "convex/values";
+import { Id } from "../../../convex/_generated/dataModel";
 import EventDetails from "../EventDetails/EventDetails";
 
 interface EventDetailsModalProps {
   onClose: () => void;
-  eventId?: Id;
+  eventId?: Id<"events">;
 }
 
 const EventDetailsModal = ({ eventId, onClose }: EventDetailsModalProps) => {

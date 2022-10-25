@@ -46,10 +46,10 @@ const EventDetails = ({ eventId }: EventDetailsProps) => {
             <ul className="EventDetails__attendees">
               {eventData?.attendees?.map(attendee => (
                 <li
-                  key={attendee._id.toString()}
+                  key={attendee?._id.toString()}
                   className="EventDetails__user"
                 >
-                  {attendee.photo && (
+                  {attendee?.photo && (
                     <img
                       src={attendee.photo}
                       width="28"
@@ -57,7 +57,7 @@ const EventDetails = ({ eventId }: EventDetailsProps) => {
                       alt={`Profile photo for ${attendee.name}`}
                     />
                   )}
-                  {attendee.name}
+                  {attendee?.name}
                 </li>
               ))}
             </ul>

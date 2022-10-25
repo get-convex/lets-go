@@ -1,5 +1,5 @@
 import getCurrentUser from "./helpers/getCurrentUser";
-import { Document, Id } from "./_generated/dataModel";
+import { Id } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 
 export type GetEventInput = {

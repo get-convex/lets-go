@@ -5,9 +5,9 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { Button, ConfigProvider, Input, Modal, Popconfirm, Table } from "antd";
-import { Id } from "convex/values";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Id } from "../../../convex/_generated/dataModel";
 import { useMutation } from "../../../convex/_generated/react";
 import { useInviteLink } from "../../hooks/inviteLink.hooks";
 import CreateEvent from "../CreateEvent/CreateEvent";
@@ -17,7 +17,9 @@ import "./Events.scss";
 import useEventsData from "./useEvents.hooks";
 
 const Events = () => {
-  const [detailsEventId, setDetailsEventId] = useState<Id | undefined>();
+  const [detailsEventId, setDetailsEventId] = useState<
+    Id<"events"> | undefined
+  >();
   const [filterText, setFilterText] = useState("");
   const { events } = useEventsData(filterText);
   const deleteEvent = useMutation("deleteEvent");
@@ -64,7 +66,7 @@ const Events = () => {
               },
               {
                 title: "Event Host",
-                render: (event) => event.host.label,
+                render: event => event.host.label,
                 key: "host",
                 filters: [
                   {
@@ -87,7 +89,7 @@ const Events = () => {
               },
               {
                 key: "actions",
-                render: (event) => (
+                render: event => (
                   <div className="Events__tableRow__actions">
                     {event.host.isCurrentUser ? (
                       <>

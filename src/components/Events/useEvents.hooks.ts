@@ -1,4 +1,3 @@
-import { Id } from "convex/values";
 import moment from "moment";
 import { useQuery } from "../../../convex/_generated/react";
 
@@ -15,7 +14,7 @@ const getStatus = (startDate: string, endDate: string) => {
 const useEvents = (filterText: string) => {
   const eventsData = useQuery("getEvents");
 
-  const events = eventsData?.map((event) => ({
+  const events = eventsData?.map(event => ({
     _id: event._id,
     title: event.title,
     date: `${moment(event.startDate).format("MM/DD/YYYY HH:mm")} - ${moment(
@@ -33,7 +32,7 @@ const useEvents = (filterText: string) => {
     status: getStatus(event.startDate, event.endDate),
   }));
 
-  const filteredEvents = events?.filter((event) =>
+  const filteredEvents = events?.filter(event =>
     event.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase())
   );
 
