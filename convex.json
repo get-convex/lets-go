@@ -1,12 +1,12 @@
 {
-  "project": "let-s-go",
-  "team": "mike",
-  "prodUrl": "https://kindhearted-wolf-11.convex.cloud",
+  "project": "let-s-go-9c67d",
+  "team": "convex",
+  "prodUrl": "https://frugal-caribou-15.convex.cloud",
   "functions": "convex/",
   "authInfo": [
     {
-      "applicationID": "R7uE0NF2NuZaLLI8fJv4JOaqjiHAoc8H",
-      "domain": "https://dev-gvxf5mpp.us.auth0.com"
+      "domain": "https://letsgogame.us.auth0.com/",
+      "applicationID": "GjyjckNbY9ynvjpEQnEryFnXoCzBTZwx"
     }
   ]
 }

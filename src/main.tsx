@@ -14,8 +14,8 @@ const convex = new ConvexReactClient(clientConfig);
 
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-gvxf5mpp.us.auth0.com"
-    clientId="R7uE0NF2NuZaLLI8fJv4JOaqjiHAoc8H"
+    domain="letsgogame.us.auth0.com"
+    clientId="GjyjckNbY9ynvjpEQnEryFnXoCzBTZwx"
     redirectUri={window.location.origin}
     cacheLocation="localstorage"
     onRedirectCallback={appState => {
