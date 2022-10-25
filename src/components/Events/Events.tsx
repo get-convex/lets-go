@@ -66,7 +66,7 @@ const Events = () => {
               },
               {
                 title: "Event Host",
-                render: event => event.host.label,
+                render: (event) => event.host.label,
                 key: "host",
                 filters: [
                   {
@@ -89,7 +89,7 @@ const Events = () => {
               },
               {
                 key: "actions",
-                render: event => (
+                render: (event) => (
                   <div className="Events__tableRow__actions">
                     {event.host.isCurrentUser ? (
                       <>

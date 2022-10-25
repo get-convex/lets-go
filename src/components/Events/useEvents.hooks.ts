@@ -1,4 +1,5 @@
 import moment from "moment";
+import notNull from "../../../convex/helpers/notNull";
 import { useQuery } from "../../../convex/_generated/react";
 
 const getStatus = (startDate: string, endDate: string) => {
@@ -13,8 +14,9 @@ const getStatus = (startDate: string, endDate: string) => {
 
 const useEvents = (filterText: string) => {
   const eventsData = useQuery("getEvents");
+  const validEventsData = eventsData?.filter(notNull);
 
-  const events = eventsData?.map(event => ({
+  const events = validEventsData?.map((event) => ({
     _id: event._id,
     title: event.title,
     date: `${moment(event.startDate).format("MM/DD/YYYY HH:mm")} - ${moment(
@@ -32,7 +34,7 @@ const useEvents = (filterText: string) => {
     status: getStatus(event.startDate, event.endDate),
   }));
 
-  const filteredEvents = events?.filter(event =>
+  const filteredEvents = events?.filter((event) =>
     event.title.toLocaleLowerCase().includes(filterText.toLocaleLowerCase())
   );
 

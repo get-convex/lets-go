@@ -1,4 +1,5 @@
 import getCurrentUser from "./helpers/getCurrentUser";
+import notNull from "./helpers/notNull";
 import { Id } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 
@@ -32,17 +33,18 @@ export default query(async (ctx, input: GetEventInput) => {
   const attendeeUsers = await Promise.all(
     attendees.map(async attendee => await db.get(attendee.userId))
   );
+  const validAttendeeUsers = attendeeUsers.filter(notNull);
 
   const isCurrentUserAttending =
     user &&
-    attendeeUsers.find(attendee => attendee?._id.equals(user._id)) !==
+    validAttendeeUsers.find(attendee => attendee?._id.equals(user._id)) !==
       undefined;
 
   return {
     ...event,
     hostUser,
     isCurrentUserHosting,
-    attendees: attendeeUsers,
+    attendees: validAttendeeUsers,
     isCurrentUserAttending,
   };
 });

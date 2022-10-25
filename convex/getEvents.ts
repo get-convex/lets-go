@@ -26,6 +26,9 @@ export default authenticatedQuery(async ({ db }, user) => {
     availableEvents.map(async event => {
       // Get the user for this host.
       const host = await db.get(event.host);
+      if (!host) {
+        return null;
+      }
 
       // Get the attendees for this event.
       const attendees = await db
@@ -36,8 +39,8 @@ export default authenticatedQuery(async ({ db }, user) => {
       return {
         ...event,
         hostDetails: {
-          name: host?.name,
-          isCurrentUser: host?._id.equals(user._id),
+          name: host.name,
+          isCurrentUser: host._id.equals(user._id),
         },
         availableSlots: event.slots - attendees.length,
       };
