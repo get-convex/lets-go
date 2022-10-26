@@ -1,4 +1,4 @@
-import authenticatedMutation from "./helpers/authenticatedMutation";
+import authenticatedMutation from './helpers/authenticatedMutation';
 
 export type CreateEventInput = {
   title: string;
@@ -12,9 +12,9 @@ export default authenticatedMutation(
   async ({ db }, user, input: CreateEventInput) => {
     const inviteCode = [...Array(7)]
       .map(() => Math.random().toString(36)[2])
-      .join("");
+      .join('');
 
-    db.insert("events", {
+    db.insert('events', {
       ...input,
       host: user._id,
       inviteCode,

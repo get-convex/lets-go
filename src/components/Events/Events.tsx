@@ -3,31 +3,31 @@ import {
   InfoOutlined,
   LinkOutlined,
   SearchOutlined,
-} from "@ant-design/icons";
-import { Button, ConfigProvider, Input, Modal, Popconfirm, Table } from "antd";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { Id } from "../../../convex/_generated/dataModel";
-import { useMutation } from "../../../convex/_generated/react";
-import { useInviteLink } from "../../hooks/inviteLink.hooks";
-import CreateEvent from "../CreateEvent/CreateEvent";
-import EventDetailsModal from "../EventDetailsModal/EventDetailsModal";
-import Empty from "./Empty/Empty";
-import "./Events.scss";
-import useEventsData from "./useEvents.hooks";
+} from '@ant-design/icons';
+import { Button, ConfigProvider, Input, Modal, Popconfirm, Table } from 'antd';
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Id } from '../../../convex/_generated/dataModel';
+import { useMutation } from '../../../convex/_generated/react';
+import { useInviteLink } from '../../hooks/inviteLink.hooks';
+import CreateEvent from '../CreateEvent/CreateEvent';
+import EventDetailsModal from '../EventDetailsModal/EventDetailsModal';
+import Empty from './Empty/Empty';
+import './Events.scss';
+import useEventsData from './useEvents.hooks';
 
 const Events = () => {
   const [detailsEventId, setDetailsEventId] = useState<
-    Id<"events"> | undefined
+    Id<'events'> | undefined
   >();
-  const [filterText, setFilterText] = useState("");
+  const [filterText, setFilterText] = useState('');
   const { events } = useEventsData(filterText);
-  const deleteEvent = useMutation("deleteEvent");
-  const deleteAttendee = useMutation("deleteAttendee");
+  const deleteEvent = useMutation('deleteEvent');
+  const deleteAttendee = useMutation('deleteAttendee');
   const { copyInviteLink } = useInviteLink();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const ref = searchParams.get("ref");
+  const ref = searchParams.get('ref');
 
   return (
     <div className="Events">
@@ -47,9 +47,9 @@ const Events = () => {
           <Table
             columns={[
               {
-                title: "Title",
-                dataIndex: "title",
-                key: "title",
+                title: 'Title',
+                dataIndex: 'title',
+                key: 'title',
                 render: (title, event) => (
                   <div className="Events__tableRow__title">
                     <strong>{title}</strong>
@@ -58,23 +58,23 @@ const Events = () => {
                 ),
               },
               {
-                title: "Slots",
-                dataIndex: "slots",
-                key: "slots",
+                title: 'Slots',
+                dataIndex: 'slots',
+                key: 'slots',
                 render: (slots, event) =>
                   `${event.availableSlots} of ${slots} available`,
               },
               {
-                title: "Event Host",
+                title: 'Event Host',
                 render: (event) => event.host.label,
-                key: "host",
+                key: 'host',
                 filters: [
                   {
-                    text: "Hosting",
+                    text: 'Hosting',
                     value: true,
                   },
                   {
-                    text: "Attending",
+                    text: 'Attending',
                     value: false,
                   },
                 ],
@@ -83,12 +83,12 @@ const Events = () => {
                   event.host.isCurrentUser === filter,
               },
               {
-                title: "Status",
-                key: "status",
-                dataIndex: "status",
+                title: 'Status',
+                key: 'status',
+                dataIndex: 'status',
               },
               {
-                key: "actions",
+                key: 'actions',
                 render: (event) => (
                   <div className="Events__tableRow__actions">
                     {event.host.isCurrentUser ? (
@@ -133,7 +133,7 @@ const Events = () => {
             ]}
             dataSource={events}
             pagination={{
-              position: ["bottomLeft"],
+              position: ['bottomLeft'],
               hideOnSinglePage: true,
             }}
             rowKey="_id"
@@ -147,7 +147,7 @@ const Events = () => {
       />
       <Modal
         title="Success!"
-        visible={ref === "inviteAccepted"}
+        visible={ref === 'inviteAccepted'}
         onCancel={() => setSearchParams({})}
         footer={null}
       >

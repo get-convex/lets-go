@@ -1,5 +1,5 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useLocation } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+import { useLocation } from 'react-router-dom';
 
 export const useAuth = () => {
   const {
@@ -16,7 +16,7 @@ export const useAuth = () => {
 
   const signIn = () =>
     loginWithRedirect({
-      redirectUri: "http://localhost:3000/redirect",
+      redirectUri: 'http://localhost:3000/redirect',
       appState: {
         returnTo: location.pathname,
       },
