@@ -16,9 +16,9 @@ export default authenticatedMutation(
       // Delete all the attendees for this event.
       const attendees = await db
         .query("attendees")
-        .filter(q => q.eq(q.field("eventId"), eventId))
+        .filter((q) => q.eq(q.field("eventId"), eventId))
         .collect();
-      attendees.forEach(attendee => db.delete(attendee._id));
+      attendees.forEach((attendee) => db.delete(attendee._id));
 
       // Delete the event itself.
       db.delete(eventId);

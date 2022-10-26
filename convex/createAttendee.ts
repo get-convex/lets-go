@@ -15,7 +15,7 @@ export default authenticatedMutation(
     // Ensure there's still an open slot.
     const attendees = await db
       .query("attendees")
-      .filter(q => q.eq(q.field("eventId"), eventId))
+      .filter((q) => q.eq(q.field("eventId"), eventId))
       .collect();
     if (attendees.length >= event?.slots) {
       return null;
@@ -24,7 +24,7 @@ export default authenticatedMutation(
     // Prevent inserting duplicate attendees.
     const existingAttendee = await db
       .query("attendees")
-      .filter(q =>
+      .filter((q) =>
         q.and(
           q.eq(q.field("eventId"), eventId),
           q.eq(q.field("userId"), user._id)

@@ -44,7 +44,7 @@ const EventDetails = ({ eventId }: EventDetailsProps) => {
           <div className="EventDetails__details__detail EventDetails__details__detail--vertical">
             <strong>Confirmed attendees:</strong>
             <ul className="EventDetails__attendees">
-              {eventData?.attendees?.map(attendee => (
+              {eventData?.attendees?.map((attendee) => (
                 <li
                   key={attendee._id.toString()}
                   className="EventDetails__user"

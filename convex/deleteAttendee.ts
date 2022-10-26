@@ -10,7 +10,7 @@ export default authenticatedMutation(
     // Find the attendee to delete.
     const attendee = await db
       .query("attendees")
-      .filter(q =>
+      .filter((q) =>
         q.and(
           q.eq(q.field("eventId"), eventId),
           q.eq(q.field("userId"), user._id)

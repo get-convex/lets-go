@@ -18,7 +18,7 @@ ReactDOM.render(
     clientId="GjyjckNbY9ynvjpEQnEryFnXoCzBTZwx"
     redirectUri={window.location.origin}
     cacheLocation="localstorage"
-    onRedirectCallback={appState => {
+    onRedirectCallback={(appState) => {
       // Auth0 doesn't accept wildcards for allowed callback URLs, so we
       // include a `returnTo` property when calling `loginWithRedirect`. We
       // can then perform the redirect when the user arrives back in our app.
