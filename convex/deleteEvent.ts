@@ -1,8 +1,8 @@
-import authenticatedMutation from './helpers/authenticatedMutation';
-import { Id } from './_generated/dataModel';
+import authenticatedMutation from "./helpers/authenticatedMutation";
+import { Id } from "./_generated/dataModel";
 
 export type DeleteEventInput = {
-  eventId: Id<'events'>;
+  eventId: Id<"events">;
 };
 
 export default authenticatedMutation(
@@ -15,8 +15,8 @@ export default authenticatedMutation(
     if (event.host.equals(user._id)) {
       // Delete all the attendees for this event.
       const attendees = await db
-        .query('attendees')
-        .filter((q) => q.eq(q.field('eventId'), eventId))
+        .query("attendees")
+        .filter((q) => q.eq(q.field("eventId"), eventId))
         .collect();
       attendees.forEach((attendee) => db.delete(attendee._id));
 

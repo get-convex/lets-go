@@ -1,17 +1,17 @@
-import { Button } from 'antd';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useMutation, useQuery } from '../../../convex/_generated/react';
-import { useAuth } from '../../hooks/auth.hooks';
-import EventDetails from '../EventDetails/EventDetails';
-import './Invitation.scss';
+import { Button } from "antd";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "../../../convex/_generated/react";
+import { useAuth } from "../../hooks/auth.hooks";
+import EventDetails from "../EventDetails/EventDetails";
+import "./Invitation.scss";
 
 const Invitation = () => {
   const { inviteCode } = useParams();
-  const event = useQuery('getEventByInviteCode', {
+  const event = useQuery("getEventByInviteCode", {
     inviteCode,
   });
   const { isLoading, isSignedIn, signIn } = useAuth();
-  const createAttendee = useMutation('createAttendee');
+  const createAttendee = useMutation("createAttendee");
   const navigate = useNavigate();
 
   if (!event) {
@@ -22,7 +22,7 @@ const Invitation = () => {
     const result = await createAttendee({ eventId: event._id });
 
     if (result) {
-      navigate('/events?ref=inviteAccepted');
+      navigate("/events?ref=inviteAccepted");
     }
   };
 

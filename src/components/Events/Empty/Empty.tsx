@@ -1,4 +1,4 @@
-import './Empty.scss';
+import "./Empty.scss";
 
 const Empty = () => (
   <div className="Empty">

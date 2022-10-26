@@ -1,6 +1,6 @@
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/auth.hooks';
-import './Landing.scss';
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth.hooks";
+import "./Landing.scss";
 
 const Landing = () => {
   const { signIn, isSignedIn } = useAuth();

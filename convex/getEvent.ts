@@ -1,10 +1,10 @@
-import getCurrentUser from './helpers/getCurrentUser';
-import notNull from './helpers/notNull';
-import { Id } from './_generated/dataModel';
-import { query } from './_generated/server';
+import getCurrentUser from "./helpers/getCurrentUser";
+import notNull from "./helpers/notNull";
+import { Id } from "./_generated/dataModel";
+import { query } from "./_generated/server";
 
 export type GetEventInput = {
-  eventId: Id<'events'>;
+  eventId: Id<"events">;
 };
 
 export default query(async (ctx, input: GetEventInput) => {
@@ -25,8 +25,8 @@ export default query(async (ctx, input: GetEventInput) => {
 
   // Get the attendees for this event.
   const attendees = await db
-    .query('attendees')
-    .filter((q) => q.eq(q.field('eventId'), event._id))
+    .query("attendees")
+    .filter((q) => q.eq(q.field("eventId"), event._id))
     .collect();
 
   // Get details for each of the attendees.

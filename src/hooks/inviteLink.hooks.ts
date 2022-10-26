@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { message } from "antd";
 
 export const useInviteLink = () => {
   const getInviteLink = (inviteCode: string) =>
@@ -6,7 +6,7 @@ export const useInviteLink = () => {
 
   const copyInviteLink = (inviteCode: string) => {
     navigator.clipboard.writeText(getInviteLink(inviteCode));
-    message.success('Link copied to clipboard');
+    message.success("Link copied to clipboard");
   };
 
   return { getInviteLink, copyInviteLink };

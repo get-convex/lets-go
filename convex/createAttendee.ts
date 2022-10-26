@@ -1,8 +1,8 @@
-import authenticatedMutation from './helpers/authenticatedMutation';
-import { Id } from './_generated/dataModel';
+import authenticatedMutation from "./helpers/authenticatedMutation";
+import { Id } from "./_generated/dataModel";
 
 export type CreateAttendeeInput = {
-  eventId: Id<'events'>;
+  eventId: Id<"events">;
 };
 
 export default authenticatedMutation(
@@ -14,8 +14,8 @@ export default authenticatedMutation(
 
     // Ensure there's still an open slot.
     const attendees = await db
-      .query('attendees')
-      .filter((q) => q.eq(q.field('eventId'), eventId))
+      .query("attendees")
+      .filter((q) => q.eq(q.field("eventId"), eventId))
       .collect();
     if (attendees.length >= event?.slots) {
       return null;
@@ -23,11 +23,11 @@ export default authenticatedMutation(
 
     // Prevent inserting duplicate attendees.
     const existingAttendee = await db
-      .query('attendees')
+      .query("attendees")
       .filter((q) =>
         q.and(
-          q.eq(q.field('eventId'), eventId),
-          q.eq(q.field('userId'), user._id)
+          q.eq(q.field("eventId"), eventId),
+          q.eq(q.field("userId"), user._id)
         )
       )
       .first();
@@ -35,7 +35,7 @@ export default authenticatedMutation(
       return null;
     }
 
-    db.insert('attendees', {
+    db.insert("attendees", {
       userId: user._id,
       eventId,
     });

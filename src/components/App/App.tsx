@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import { useConvex, useMutation } from '../../../convex/_generated/react';
-import { useAuth } from '../../hooks/auth.hooks';
-import Header from '../Header/Header';
-import './App.scss';
+import classNames from "classnames";
+import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { useConvex, useMutation } from "../../../convex/_generated/react";
+import { useAuth } from "../../hooks/auth.hooks";
+import Header from "../Header/Header";
+import "./App.scss";
 
 interface AppProps {
   dark?: boolean;
@@ -13,7 +13,7 @@ interface AppProps {
 const App = ({ dark }: AppProps) => {
   const { isSignedIn, isLoading, getIdTokenClaims } = useAuth();
   const convex = useConvex();
-  const storeUser = useMutation('storeUser');
+  const storeUser = useMutation("storeUser");
 
   useEffect(() => {
     if (isLoading) {
@@ -38,10 +38,10 @@ const App = ({ dark }: AppProps) => {
   }, [isSignedIn, isLoading, getIdTokenClaims, convex, storeUser]);
 
   return (
-    <div className={classNames('App', { 'App--dark': dark })}>
+    <div className={classNames("App", { "App--dark": dark })}>
       <Header dark={dark} />
       <div className="App__content">
-        {isLoading ? 'Loading...' : <Outlet />}
+        {isLoading ? "Loading..." : <Outlet />}
       </div>
     </div>
   );

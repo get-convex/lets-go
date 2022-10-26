@@ -1,10 +1,10 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Form, Input, InputNumber, Modal } from 'antd';
-import moment, { Moment } from 'moment';
-import { useState } from 'react';
-import { useMutation } from '../../../convex/_generated/react';
-import { useInviteLink } from '../../hooks/inviteLink.hooks';
-import './CreateEvent.scss';
+import { PlusOutlined } from "@ant-design/icons";
+import { Button, DatePicker, Form, Input, InputNumber, Modal } from "antd";
+import moment, { Moment } from "moment";
+import { useState } from "react";
+import { useMutation } from "../../../convex/_generated/react";
+import { useInviteLink } from "../../hooks/inviteLink.hooks";
+import "./CreateEvent.scss";
 
 type Inputs = {
   title: string;
@@ -16,16 +16,16 @@ type Inputs = {
 const CreateEvent = () => {
   const [createEventModalOpen, setCreateEventModalOpen] = useState(false);
   const [copyLinkModalOpen, setCopyLinkModalOpen] = useState(false);
-  const [inviteCode, setInviteCode] = useState('');
+  const [inviteCode, setInviteCode] = useState("");
   const [form] = Form.useForm<Inputs>();
-  const createEvent = useMutation('createEvent');
+  const createEvent = useMutation("createEvent");
   const { getInviteLink, copyInviteLink } = useInviteLink();
 
   const defaultStartTime = moment()
-    .add(1, 'day')
-    .set('hours', 18)
-    .set('minutes', 0);
-  const defaultEndTime = moment(defaultStartTime).add(2, 'hours');
+    .add(1, "day")
+    .set("hours", 18)
+    .set("minutes", 0);
+  const defaultEndTime = moment(defaultStartTime).add(2, "hours");
 
   const handleFinish = async () => {
     const { title, description, time, slots } = form.getFieldsValue();
@@ -75,24 +75,24 @@ const CreateEvent = () => {
           <Form.Item
             label="Title"
             name="title"
-            rules={[{ required: true, message: 'Title is required' }]}
+            rules={[{ required: true, message: "Title is required" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Description"
             name="description"
-            rules={[{ required: true, message: 'Description is required' }]}
+            rules={[{ required: true, message: "Description is required" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Date and time"
             name="time"
-            rules={[{ required: true, message: 'Date and time is required' }]}
+            rules={[{ required: true, message: "Date and time is required" }]}
           >
             <DatePicker.RangePicker
-              showTime={{ format: 'HH:mm' }}
+              showTime={{ format: "HH:mm" }}
               format="MM/DD/YYYY HH:mm"
               minuteStep={15}
             />
@@ -100,7 +100,7 @@ const CreateEvent = () => {
           <Form.Item
             label="Number of slots"
             name="slots"
-            rules={[{ required: true, message: 'Number of slots is required' }]}
+            rules={[{ required: true, message: "Number of slots is required" }]}
           >
             <InputNumber min={1} max={25} />
           </Form.Item>

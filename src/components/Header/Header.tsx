@@ -1,9 +1,9 @@
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Avatar, Button, Dropdown, Menu } from 'antd';
-import classNames from 'classnames';
-import { useAuth } from '../../hooks/auth.hooks';
-import './Header.scss';
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Avatar, Button, Dropdown, Menu } from "antd";
+import classNames from "classnames";
+import { useAuth } from "../../hooks/auth.hooks";
+import "./Header.scss";
 
 interface HeaderProps {
   dark?: boolean;
@@ -13,7 +13,7 @@ const Header = ({ dark }: HeaderProps) => {
   const { isSignedIn, signIn, signOut, user } = useAuth();
 
   return (
-    <header className={classNames('Header', { 'Header--dark': dark })}>
+    <header className={classNames("Header", { "Header--dark": dark })}>
       <svg
         className="Header__logo"
         width="28"
