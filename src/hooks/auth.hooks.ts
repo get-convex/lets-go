@@ -16,7 +16,7 @@ export const useAuth = () => {
 
   const signIn = () =>
     loginWithRedirect({
-      redirectUri: "http://localhost:3000/redirect",
+      redirectUri: `${window.location.origin}/redirect`,
       appState: {
         returnTo: location.pathname,
       },
