@@ -5,7 +5,7 @@ const RequireSignedIn = ({ children }: { children: JSX.Element }) => {
 
   if (!isLoading && !isAuthenticated) {
     loginWithRedirect({
-      redirectUri: "http://localhost:3000/events",
+      redirectUri: `${window.location.origin}/events`,
     });
 
     return <p>You are not authenticated.</p>;
