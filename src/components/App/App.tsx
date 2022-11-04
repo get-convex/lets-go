@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useConvex, useMutation } from "../../../convex/_generated/react";
 import { useAuth } from "../../hooks/auth.hooks";
@@ -11,12 +11,15 @@ interface AppProps {
 }
 
 const App = ({ dark }: AppProps) => {
-  const { isSignedIn, isLoading, getIdTokenClaims } = useAuth();
+  const { isSignedIn, isLoading: authLoading, getIdTokenClaims } = useAuth();
   const convex = useConvex();
   const storeUser = useMutation("storeUser");
+  const [userStored, setUserStored] = useState(false);
+
+  const isLoading = authLoading || !userStored;
 
   useEffect(() => {
-    if (isLoading) {
+    if (authLoading) {
       return;
     }
 
@@ -29,13 +32,16 @@ const App = ({ dark }: AppProps) => {
         // Store the user in the database.
         // Recall that `storeUser` gets the user information via the `auth`
         // object on the server. You don't need to pass anything manually here.
-        let id = await storeUser();
+        let userId = await storeUser();
+        if (userId) {
+          setUserStored(true);
+        }
       });
     } else {
       // Tell the Convex client to clear all authentication state.
       convex.clearAuth();
     }
-  }, [isSignedIn, isLoading, getIdTokenClaims, convex, storeUser]);
+  }, [isSignedIn, authLoading, getIdTokenClaims, convex, storeUser]);
 
   return (
     <div className={classNames("App", { "App--dark": dark })}>
