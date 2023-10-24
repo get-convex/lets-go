@@ -1,3 +1,8 @@
+# DEPRECATED
+
+See https://convex.dev/templates for more recent templates to work off of
+
+
 # Let's Go
 
 A sample project demonstrating [Convex](https://www.convex.dev/).
